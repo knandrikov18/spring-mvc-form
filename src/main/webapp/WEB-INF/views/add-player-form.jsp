@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: KNAndrikov18
@@ -14,6 +15,13 @@
 <head>
     <title>Add Player</title>
 </head>
+<style>
+.error{
+    color: red;
+    font-style: italic;
+}
+
+</style>
 <body>
 <h2>
     Player Form
@@ -23,8 +31,11 @@
 <%--@elvariable id="athlete" type=""--%>
 <form:form action = "processPlayerForm" modelAttribute = "athlete">
     <br><br>
+    First Name : <form:input path="firstName"/>
+    <br><br>
 
-    Name: <form:input path="lastName"/>
+    Last Name *: <form:input path="lastName"/>
+    <form:errors path="lastName" cssClass="error"/>
     <br><br>
    Country: <form:select path="country">
 
@@ -54,6 +65,18 @@
             <li>${title}</li>
         </c:forEach>
     </ul>
+
+    <br><br>
+    Current rank *: <form:input path="rank"/>
+    <form:errors path="rank" cssClass="error"/>
+    <br><br>
+
+    Last Won (dd-mm-yyyy): <form:input path="lastWon"/>
+    <form:errors path="lastWon" cssClass="error"/>
+
+    <br><br>
+    Prize Money (USD): <form:input path="prizeMoney" placeholder = "$#, ###, ###"/>
+    <form:errors path="prizeMoney" cssClass="error"/>
     <input type = "submit" value="Add Player"/>
 </form:form>
 </body>

@@ -1,5 +1,6 @@
 <jsp:useBean id="athlete" scope="request" type="com.example.springmvc.Model.Athlete"/>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: KNAndrikov18
@@ -22,10 +23,17 @@
 The player has been added.
 
 <br><br>
-Name : ${athlete.lastName}
+<b>Name</b> : ${athlete.firstName}
+${athlete.lastName}
 <br><br>
 Country: ${athlete.country}
 <br><br>
 Handedness: ${athlete.handedness}
+
+<b>Current Rank</b> : ${athlete.rank}
+
+<b>Last Won</b> : <fmt:formatDate value="${athlete.lastWon}" type="date" pattern="dd-MM-YYYY"/>
+
+<b>Prize Money</b> : ${athlete.prizeMoney}
 </body>
 </html>
